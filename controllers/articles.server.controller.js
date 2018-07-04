@@ -35,7 +35,9 @@ module.exports.all = function(req, res) {
 
 module.exports.create = function(req, res) {
   var article = new Article(req.body);
+
  article.postedBy = req.user;
+
   article.save(function(err, data) {
     if (err) {
       return res.status(400).send({
